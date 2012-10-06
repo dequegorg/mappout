@@ -1,2 +1,9 @@
 This is yet another random map generator. There is nothing extraordinary about it, except that I made it and that's what matters to me.
 Feel free to use and reuse the code as you like.
+
+For the perlin noise based map to work, you need Python noise module http://pypi.python.org/pypi/noise/ which you can install with pip:
+
+$ sudo apt-get install python-pip
+$ sudo pip install noise
+
+[07/10/12] The map_perlin_01.py file will generate a simple map using perlin noise and diplay it using Qt4. The generated map is not really random as it can be retrieved by its "seed" number which is diplayed in the title bar of the preview window. The map can be retrieved by passing the seed number into the Application() instance e.g. Application(seed = 782). If no seed is passed, a map with a random seed between 1 and 999 will be picked up and displayed. The sea leavel can be changed too by passing an integer between 0 and 9 in the Application() instance. The size of the pixels of the map, 1 pixel by default can be increased also. The map's width and height can be changed too, alghouth that will not expand the scope of the map, but simply increase the level of details and apparent size of the preview. The actual map is created relatively to the surface. To expand the map without stretching the content, one would have to change values in the pnoise2() function in the World.drawLand() method directly. In that same function the persistence ratio can also be changed to increase the roughness of the map, set at 0.6 for now with octave at 13. One can play with those values to obtain different results with the same seed.
